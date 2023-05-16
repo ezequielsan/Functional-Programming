@@ -126,3 +126,42 @@ initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
 calcBmis :: (RealFloat a) => [(a,a)] -> [a]
 calcBmis xs = [ bmi w h | (w, h) <- xs ]
     where bmi weight height = weight / (height ^ 2)
+
+-- Let it be
+-- São associações muito semelhantes as where, porem mais restritas
+
+cylinder :: (RealFloat a) => a -> a -> a
+cylinder r h = 
+    let sideArea = 2 * pi * r * h
+        topArea = pi * r^2
+    in sideArea + 2 * topArea
+
+-- podemos usar let in em qualquer lugar
+sumCrazy = 4 * (let a = 9 in a + 1) + 2
+
+squareCrazy = [ let square x = x * x in (square 5, square 3, square 2 ) ]
+
+tupleCrazy = (let (a,b,c) = (1, 2, 3) in a + b + c) * 100
+
+-- Case expressions
+-- São estruturas muito parecidas com os cases das linguagens 
+-- imperativas
+
+-- Podemos reescrever a função head ja apresentada usando case
+head'' :: [a] -> a
+head'' xs = case xs of [] -> error "Not exists, empty  list"
+                       (x:_) -> x
+
+{- Sintaxe de expressões case 
+   case expression of pattern -> result  
+                   pattern -> result  
+                   pattern -> result  
+                   ... 
+-}
+
+-- Ao contrário do pattern matching, expressões cases podem 
+-- ser colocadas em qualquer lugar
+describeList :: [a] -> String
+describeList xs = "A lista eh " ++ case xs of [] -> "vazia."
+                                              [x] -> "uma lista unitaria."
+                                              xs -> "uma lista grande."
