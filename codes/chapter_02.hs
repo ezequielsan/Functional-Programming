@@ -92,7 +92,7 @@ pairs list1 list2 = zip list1 list2
 -- e tem um perímetro de 24?
 triangles = [ (a, b, c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2, a + b + c == 24 ]
 
-{- Chapters exercises -}
+{- Chapter exercises -}
 -- 1. Sejam as listas L e L' tal que L' equivale a L sem o primeiro 
 -- e último elementos. Faça uma função em haskell que receba L e 
 -- retorne L'.  
